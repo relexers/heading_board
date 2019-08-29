@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{current_rubric.name}} - Board</title>
+</head>
+<body>
+    <h1>Board</h1>
+    <h2>Title: {{current_rubric.name}}</h2>
+    <div>
+        <a href="{% url 'index' %}">Home page</a>
+        {%for rubric in rubrics%}
+        <a href="{% url 'by_rubric' rubric.pk %}">{{rubric.name}}</a>
+        {%endfor%}
+    </div>
+    {%for bb in bbs %}
+    <div>
+        <h2>{{bb.title}}</h2>
+        <p>{{bb.content}}</p>
+        <p>{{bb.published|date:"d.m.Y H:i:s"}}</p>
+    </div>
+    {%endfor%}
+</body>
+</html>
