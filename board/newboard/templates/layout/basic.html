@@ -1,0 +1,25 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'newboard/style.css' %}">
+    <title>{%block title%} Home page {%endblock%} - Board Heading</title>
+</head>
+<body>
+    <header>
+        <h1>Headings</h1>
+    </header>
+<nav>
+    <a href="{% url 'index' %}">Home Page</a>
+    <a href="{% url 'add' %}">Add</a>
+    {% for rubric in rubrics %}
+    <a href="{% url 'by_rubric' rubric.pk %}">{{rubric.name}}</a>
+    {%endfor%}
+</nav>
+<section>
+    {%block content%}  {%endblock%}
+</section>
+</body>
+</html>
